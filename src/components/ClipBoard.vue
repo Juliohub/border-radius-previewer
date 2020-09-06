@@ -103,7 +103,7 @@ button:hover {
   .clipboard {
     min-height: 50px;
     flex-direction: column;
-    margin-top: 80px;
+    margin-top: 100px;
   }
   button {
     min-height: 50px;

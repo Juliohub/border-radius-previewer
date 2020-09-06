@@ -53,6 +53,40 @@ export default {
 .c {
   transform: rotate(90deg);
 }
+/* Personalizando o Input Range */
+input {
+  -webkit-appearance: none;
+  width: 200px;
+  height: 5px;
+  border-radius: 4px;
+  background: #fff;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: 0.2s;
+  transition: opacity 0.2s;
+}
+
+input:hover {
+  opacity: 1;
+}
+
+input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: blueviolet;
+  cursor: pointer;
+}
+
+input::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: blueviolet;
+  cursor: pointer;
+}
 
 @media screen and (max-width: 770px) {
   .content {
