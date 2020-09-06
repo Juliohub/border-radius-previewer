@@ -98,16 +98,21 @@ input::-moz-range-thumb {
   cursor: pointer;
 }
 
-@media screen and (max-width: 770px) {
-  .center {
-    width: 200px;
-    height: 200px;
+@media screen and (max-width: 500px) {
+  input::-webkit-slider-thumb {
+    width: 25px;
+    height: 25px;
+  }
+
+  input::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
   }
 }
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 400px) {
   .center {
-    width: 150px;
-    height: 150px;
+    width: 250px;
+    height: 250px;
   }
 }
 </style>

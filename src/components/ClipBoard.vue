@@ -1,15 +1,20 @@
 <template>
-  <div class="clipboard">
+  <div class="clipboard" :style="{bottom: `${textModal ? '0px' : '-35%'}`}">
     <span>border-radius:</span>
     <div class="clip">
       {{`${border.a}% ${100 - border.a}% ${100 - border.d}% ${border.d}% /
       ${border.b}% ${border.c}% ${100 - border.c}% ${100 - border.b}%`}}
     </div>
-    <button @click="copyText">Copiar</button>
+    <button class="btn-clip" @click="copyText">Copiar</button>
 
     <transition name="textCopy">
       <div v-if="textCopied" class="mensagemCopy">Texto Copiado com Sucesso!</div>
     </transition>
+
+    <button
+      @click="textModal = !textModal"
+      :class="{'btn-clip-rotate': textModal, 'btn-code': true}"
+    >&#9650;</button>
   </div>
 </template>
 
@@ -22,6 +27,7 @@ export default {
   data() {
     return {
       textCopied: false,
+      textModal: false,
     };
   },
   methods: {
@@ -40,11 +46,13 @@ export default {
 
 <style scoped>
 .clipboard {
+  position: relative;
   height: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-top: 40px;
+  transition: all 0.5s;
 }
 span {
   padding: 0 20px;
@@ -58,7 +66,7 @@ span {
   word-spacing: 10px;
   line-height: 50px;
 }
-button {
+.btn-clip {
   height: 100%;
   padding: 0 20px;
   border: none;
@@ -68,13 +76,13 @@ button {
   cursor: pointer;
   transition: all 0.3s;
 }
-button:hover {
+.btn-clip:hover {
   background-color: rgb(200, 0, 100);
 }
 
 .mensagemCopy {
   position: absolute;
-  top: 100px;
+  top: -150px;
   margin: 0 auto;
   padding: 24px 28px;
   background: lightseagreen;
@@ -90,6 +98,9 @@ button:hover {
 .textCopy-leave-active {
   transition: all 0.5s;
 }
+.btn-code {
+  display: none;
+}
 
 @media screen and (max-width: 770px) {
   .clip {
@@ -101,23 +112,50 @@ button:hover {
 }
 @media screen and (max-width: 550px) {
   .clipboard {
-    min-height: 50px;
+    position: fixed;
+    height: auto;
     flex-direction: column;
     margin-top: 100px;
+    left: 0;
+    right: 0;
+    border-top: 5px solid #161616;
+    padding: 40px 0;
+    background-color: #191919;
   }
-  button {
+  .btn-code {
+    display: block;
+    position: absolute;
+    top: -35px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: none;
+    color: #fff;
+    font-size: 24px;
+    background-color: #222;
+    box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.4);
+    outline: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.5s;
+  }
+  .btn-clip-rotate {
+    transform: rotate(180deg);
+  }
+  .btn-clip {
     min-height: 50px;
     width: 200px;
   }
   .clip,
-  button {
+  .btn-clip {
     border-radius: 5px;
     margin: 10px;
   }
 }
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 350px) {
   .clip {
-    min-height: 100px;
+    min-height: 50px;
   }
 }
 </style>
