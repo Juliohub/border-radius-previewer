@@ -72,7 +72,7 @@ export default {
 input {
   -webkit-appearance: none;
   height: 1px;
-  background: transparent;
+  background: black;
   outline: none;
   opacity: 0.6;
   transition: opacity 0.2s;
