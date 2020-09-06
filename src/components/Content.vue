@@ -35,6 +35,7 @@ export default {
   height: 320px;
   background: blueviolet;
 }
+
 .section {
   display: flex;
   flex-direction: column;
@@ -52,8 +53,25 @@ export default {
 .c {
   transform: rotate(90deg);
 }
-input {
-  color: red;
-  background: blue;
+
+@media screen and (max-width: 770px) {
+  .content {
+    width: 200px;
+    height: 200px;
+  }
+}
+@media screen and (max-width: 450px) {
+  .content {
+    width: 150px;
+    height: 150px;
+  }
+  .center {
+    flex-direction: column;
+  }
+  .b,
+  .c {
+    transform: rotate(0deg);
+    margin: 10px;
+  }
 }
 </style>

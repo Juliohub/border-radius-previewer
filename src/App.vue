@@ -42,9 +42,15 @@ h1 {
   text-align: center;
   color: #eee;
 }
+@media screen and (max-width: 770px) {
+  h1 {
+    font-size: 2rem;
+  }
+}
 body {
   background-color: #222;
   color: #fff;
+  max-height: 100vh;
 }
 body,
 input,

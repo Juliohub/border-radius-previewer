@@ -90,4 +90,34 @@ button:hover {
 .textCopy-leave-active {
   transition: all 0.5s;
 }
+
+@media screen and (max-width: 770px) {
+  .clip {
+    padding: 0 10px;
+    word-spacing: 5px;
+    line-height: 50px;
+    font-size: 12px;
+  }
+}
+@media screen and (max-width: 550px) {
+  .clipboard {
+    min-height: 50px;
+    flex-direction: column;
+    margin-top: 80px;
+  }
+  button {
+    min-height: 50px;
+    width: 200px;
+  }
+  .clip,
+  button {
+    border-radius: 5px;
+    margin: 10px;
+  }
+}
+@media screen and (max-width: 320px) {
+  .clip {
+    min-height: 100px;
+  }
+}
 </style>
