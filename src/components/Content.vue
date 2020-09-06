@@ -1,21 +1,16 @@
 <template>
   <section class="section">
-    <div class="top">
-      <input type="range" min="0" max="100" v-model="border.a" />
-    </div>
     <div class="center">
+      <input type="range" min="0" max="100" v-model="border.a" class="a" />
       <input type="range" min="0" max="100" v-model="border.b" class="b" />
+      <input type="range" min="0" max="100" v-model="border.c" class="c" />
+      <input type="range" min="0" max="100" v-model="border.d" class="d" />
       <div
         class="content"
         :style="{borderRadius:
         `${border.a}% ${100 - border.a}% ${100 - border.d}% ${border.d}% /
          ${border.b}% ${border.c}% ${100 - border.c}% ${100 - border.b}%`}"
       ></div>
-
-      <input type="range" min="0" max="100" v-model="border.c" class="c" />
-    </div>
-    <div class="bottom">
-      <input type="range" min="0" max="100" v-model="border.d" />
     </div>
   </section>
 </template>
@@ -30,82 +25,89 @@ export default {
 </script>
 
 <style scoped>
-.content {
+.center {
   width: 320px;
   height: 320px;
-  background: blueviolet;
-}
-
-.section {
+  position: relative;
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  margin: 10px auto;
+}
+.content {
+  width: 100%;
+  height: 100%;
+  background: blueviolet;
 }
 .top,
 .bottom {
   margin: 0 auto;
 }
-.center {
-  display: flex;
-  align-items: center;
-  margin: 10px auto;
-}
+
 .b,
 .c {
   transform: rotate(90deg);
 }
+
+.a,
+.b,
+.c,
+.d {
+  position: absolute;
+  width: 100%;
+}
+.a {
+  top: 0;
+}
+.b {
+  right: 50%;
+}
+.c {
+  left: 50%;
+}
+.d {
+  bottom: 0;
+}
+
 /* Personalizando o Input Range */
 input {
   -webkit-appearance: none;
-  width: 200px;
-  height: 5px;
-  border-radius: 4px;
-  background: #fff;
+  height: 1px;
+  background: transparent;
   outline: none;
-  opacity: 0.7;
-  -webkit-transition: 0.2s;
+  opacity: 0.6;
   transition: opacity 0.2s;
 }
-
 input:hover {
   opacity: 1;
 }
-
 input::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
   border-radius: 50%;
-  background: blueviolet;
+  background: red;
   cursor: pointer;
 }
 
 input::-moz-range-thumb {
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
   border-radius: 50%;
-  background: blueviolet;
+  background: red;
   cursor: pointer;
 }
 
 @media screen and (max-width: 770px) {
-  .content {
+  .center {
     width: 200px;
     height: 200px;
   }
 }
 @media screen and (max-width: 450px) {
-  .content {
+  .center {
     width: 150px;
     height: 150px;
-  }
-  .center {
-    flex-direction: column;
-  }
-  .b,
-  .c {
-    transform: rotate(0deg);
-    margin: 10px;
   }
 }
 </style>
